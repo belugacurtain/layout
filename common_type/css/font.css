@@ -3,6 +3,26 @@
 /* Poppins */
 @font-face{
     font-family:'Poppins';
-    font-weight: 600;
+    font-weight:600;
     src:url("../font/Poppins-Bold.woff") format('woff');
+}
+@font-face{
+    font-family:'Poppins';
+    font-weight:500;
+    src:url("../font/Poppins-Medium.woff") format('woff');
+}
+@font-face{
+    font-family:'Poppins';
+    font-weight:400;
+    src:url("../font/Poppins-Regular.woff") format('woff');
+}
+@font-face{
+    font-family:'Poppins';
+    font-weight:200;
+    src:url("../font/Poppins-Light.woff") format('woff');
+}
+@font-face{
+    font-family:'Poppins';
+    font-weight:100;
+    src:url("../font/Poppins-Thin.woff") format('woff');
 }
