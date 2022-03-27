@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+/* Poppins */
+@font-face{
+    font-family:'Poppins';
+    font-weight: 600;
+    src:url("../font/Poppins-Bold.woff") format('woff');
+}
