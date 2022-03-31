@@ -3,7 +3,7 @@
 /* default */
 *{margin:0;padding:0;border:none;font-size:0;line-height:0;font-weight:inherit;font-family:inherit;box-sizing:border-box;}
 html{display:block;width:100vw;height:100vh;overflow:hidden;}
-body{width:100vw;height:100vh;background-color:black;font-weight:400;font-family:'Poppins';}
+body{display:block;position:relative;width:100vw;height:100vh;background-color:black;font-weight:400;font-family:'Poppins';}
 
 /* animation total */
 @keyframes logo-box-before {
@@ -27,6 +27,8 @@ body{width:100vw;height:100vh;background-color:black;font-weight:400;font-family
 }
 
 
+/* header area */
+#header{position:static;}
 
 /* nav */
 .logo_box{display:block;position:absolute;z-index:1;top:50%;left:50%;width:20vw;height:20vw;transform:translate(-50%, -50%);}
@@ -35,21 +37,20 @@ body{width:100vw;height:100vh;background-color:black;font-weight:400;font-family
 .logo_box:before{border:1px solid #fff;animation-name:logo-box-before;animation-duration:5000ms;animation-direction:alternate;}
 .logo_box:after{background-image:linear-gradient(45deg, #fff, transparent);animation-name:logo-box-after;animation-duration:3500ms;animation-direction:alternate-reverse;}
 .logo_box .logo_title{display:inline-block;position:absolute;z-index:1;top:50%;left:0;width:100%;transform:translateY(-50%);font-size:1.4vw;color:#fff;line-height:1em;letter-spacing:-0.05em;font-weight:500;word-break:keep-all;text-shadow:0 0 5px rgba(5, 5, 5, 1);text-align:center;vertical-align:top;box-sizing:border-box;}
-
 .nav{display:block;position:absolute;top:50%;left:50%;width:0%;height:0%;box-sizing:border-box;transform-origin:50% 50%;visibility:hidden;opacity:0;transform:translateX(-50%) translateY(-50%) scale(0);transition-property:width, height, visibility, opacity, transform;transition-duration:600ms;transition-timing-function:ease-in-out;}
 .logo_box:hover .nav{width:100%;height:100%;visibility:visible;opacity:1;transform:translateX(-50%) translateY(-50%) scale(1);}
-
 .nav .nav_list{display:inline-block;position:absolute;top:0;left:0;width:100%;height:100%;font-size:0;line-height:0;vertical-align:top;box-sizing:border-box;}
-.nav .nav_list{animation-name:nav_list-infinite-rotate;animation-duration:5000ms;animation-iteration-count:infinite;animation-timing-function:linear;}
-
+.nav .nav_list{animation-name:nav_list-infinite-rotate;animation-duration:10000ms;animation-iteration-count:infinite;animation-timing-function:linear;}
 .nav .nav_list .nav_item{display:inline-block;position:absolute;width:0px;height:0px;background-color:#f00;transition-property:width, height;transition-duration:600ms;transition-timing-function:ease-in-out;}
 .logo_box:hover .nav .nav_list .nav_item{width:100px;height:100px;}
 .nav .nav_list .nav_item.top{bottom:100%;left:50%;transform:translateX(-50%);}
 .nav .nav_list .nav_item.bottom{top:100%;left:50%;transform:translateX(-50%);}
 .nav .nav_list .nav_item.right{top:50%;left:100%;transform:translateY(-50%);}
 .nav .nav_list .nav_item.left{top:50%;right:100%;transform:translateY(-50%);}
-
 .nav .nav_list .nav_item button{}
+
+/* container area */
+#container{position:static;}
 
 
 
