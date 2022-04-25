@@ -41,6 +41,5 @@ html,body{display:block;width:100%;margin:0;padding:0;overflow:hidden;}
 #container:after{display:table;clear:both;content:'';}
 
 section{display:block;float:left;height:100vh;background-color:black;width:100vw;}
-section.sub_section.type1{background-color:#f00;}
-section.sub_section.type2{background-color:#0f0;}
-section.sub_section.type3{background-color:#00f;}
+section:nth-child(2n){background-color:white;}
+

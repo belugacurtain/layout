@@ -76,37 +76,30 @@ $(document).ready(function () {
     var move, count = 0;
 
     window.onmousewheel = function (e) {
-        //
         if(e.wheelDelta === -120){
             count++;
             move = (count/80)*100;
-            console.log(move);
-            if(move > ContainerWidthPer){
-                ContainerMove(0);
-                count = 0;
 
-                return count;
+            if(move >= ContainerWidthPer){
+                ContainerMove(100);
+                move = 100;
+                count = 80;
             }
-            if(move <= ContainerWidthPer){
+            if(move < ContainerWidthPer){
                 ContainerMove(move);
             }
         }
-        //
         else{
             count--;
             move = (count/80)*100;
-            console.log(move);
+
             if(move < 0){
                 ContainerMove(0);
-                count = 0;
+                move=0;
+                count=0;
+            }
 
-                return count;
-            }
-            if(move >= ContainerWidthPer){
-                ContainerMove(move);
-            }
+            ContainerMove(move);
         }
     }
 });
-
-
