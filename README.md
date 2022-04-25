@@ -10,4 +10,4 @@ Gunami Only Layout
 - https://gunami4573.github.io/layout/layouttype3/layouttype3.html
 
 //
-- https://gunami4573.github.io/layout/layouttype3/layouttype4.html
+- https://gunami4573.github.io/layout/layouttype4/layouttype4.html
