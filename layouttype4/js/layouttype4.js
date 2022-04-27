@@ -1,6 +1,6 @@
 window.onload = function(){
 
-    //
+    //gunami
     var Wrapper = document.getElementById('wrapper'),
         LnbBtn = document.querySelector('.lnb_btn');
     LnbBtn.addEventListener("click", function () {
@@ -17,18 +17,18 @@ window.onload = function(){
     var Container = document.getElementById('container'),
         ContainerWidth = Container.scrollWidth,
         ContainerWidthPer = (ContainerWidth / ContainerWidth) * 100,
-        SectionWrap = document.getElementsByClassName('section_wrap'),
         Section = document.getElementsByClassName('section'),
-        SectionArea = ContainerWidthPer / Section.length;
-    console.log(Section.length);
-    console.log(SectionArea);
+        SectionIndex = Section.length,
+        SectionLength = ContainerWidthPer / SectionIndex,
+        SectionWrap = document.getElementsByClassName('section_wrap');
+
 
     //
     function ContainerMove(event){
         Container.style.transform = "translateX(-"+event+"%)";
     }
     function SectionScale(event, index){
-        SectionWrap[index].style.transform = "scale("+event+")";
+        SectionWrap[index].style.transform = "scaleX("+event+")";
     }
 
     //
@@ -37,7 +37,6 @@ window.onload = function(){
         if(e.wheelDelta === -120){
             count++;
             move = (count / ContainerWidthPer) * ContainerWidthPer;
-            console.log(move);
             if(move > ContainerWidthPer){
                 ContainerMove(ContainerWidthPer);
                 move = ContainerWidthPer;
@@ -45,10 +44,9 @@ window.onload = function(){
             }
             if(move <= ContainerWidthPer){
                 ContainerMove(move);
-                var sectionnumber = count / SectionArea;
-                console.log(sectionnumber);
+                var sectionnumber = count / SectionLength;
                 if(sectionnumber <= 1){
-                    SectionScale((1 - (count/SectionArea)), 0);
+                    SectionScale((1 - (count/SectionLength)), 0);
                 }
                 if(sectionnumber > 1 && sectionnumber <= 2 ){
                     SectionScale((2 - sectionnumber), 1);
@@ -59,7 +57,16 @@ window.onload = function(){
                 if(sectionnumber > 3 && sectionnumber <= 4 ){
                     SectionScale((4 - sectionnumber), 3);
                 }
+
+                if(count % SectionLength == 0){
+                    console.log('count:',count);
+                    console.log('SectionLength:',SectionLength);
+                    console.log('sectionnumber:',sectionnumber);
+
+                }
+
             }
+
         }
         else{
             count--;
@@ -71,21 +78,22 @@ window.onload = function(){
             }
             if(move >= 0){
                 ContainerMove(move);
-                var sectionnumber = count / SectionArea;
-                console.log(sectionnumber);
+                var sectionnumber = count / SectionLength;
                 if(sectionnumber < 1 && sectionnumber >= 0){
-                    SectionScale((1 - (count/SectionArea)), 0);
+                    SectionScale((1 - (count/SectionLength)), 0);
                 }
                 if(sectionnumber < 2 && sectionnumber >= 1){
-                    SectionScale((2 - (count/SectionArea)), 1);
+                    SectionScale((2 - (count/SectionLength)), 1);
                 }
                 if(sectionnumber < 3 && sectionnumber >= 2){
-                    SectionScale((3 - (count/SectionArea)), 2);
+                    SectionScale((3 - (count/SectionLength)), 2);
                 }
                 if(sectionnumber < 4 && sectionnumber >= 3){
-                    SectionScale((4 - (count/SectionArea)), 3);
+                    SectionScale((4 - (count/SectionLength)), 3);
                 }
             }
+
+            console.log(count);
         }
     }
 }   //window.onload end
