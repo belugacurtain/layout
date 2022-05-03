@@ -1,3 +1,6 @@
+const consolestyle = 'color:#FF0000;';
+console.log('gunami', consolestyle);
+
 window.onload = function(){
 
     //gunami
@@ -22,78 +25,62 @@ window.onload = function(){
         SectionLength = ContainerWidthPer / SectionIndex,
         SectionWrap = document.getElementsByClassName('section_wrap');
 
+    console.log(SectionIndex);
 
     //
     function ContainerMove(event){
         Container.style.transform = "translateX(-"+event+"%)";
     }
     function SectionScale(event, index){
-        SectionWrap[index].style.transform = "scaleX("+event+")";
+        SectionWrap[index].style.transform = "scale("+event+")";
     }
 
     //
+    var gunami = 1;
     var move, count = 0;
+
     window.onmousewheel = function (e) {
         if(e.wheelDelta === -120){
             count++;
             move = (count / ContainerWidthPer) * ContainerWidthPer;
-            if(move > ContainerWidthPer){
+            if(move <= ContainerWidthPer){
+                ContainerMove(move);
+                if(gunami <= SectionIndex){
+                    SectionScale((gunami - (count / SectionLength)), gunami-1);
+                    if(count % SectionLength == 0){
+                        gunami++;
+                    }
+                }
+            }
+            else{
                 ContainerMove(ContainerWidthPer);
                 move = ContainerWidthPer;
                 count = ContainerWidthPer;
+                gunami = SectionIndex-1;
             }
-            if(move <= ContainerWidthPer){
-                ContainerMove(move);
-                var sectionnumber = count / SectionLength;
-                if(sectionnumber <= 1){
-                    SectionScale((1 - (count/SectionLength)), 0);
-                }
-                if(sectionnumber > 1 && sectionnumber <= 2 ){
-                    SectionScale((2 - sectionnumber), 1);
-                }
-                if(sectionnumber > 2 && sectionnumber <= 3 ){
-                    SectionScale((3 - sectionnumber), 2);
-                }
-                if(sectionnumber > 3 && sectionnumber <= 4 ){
-                    SectionScale((4 - sectionnumber), 3);
-                }
-
-                if(count % SectionLength == 0){
-                    console.log('count:',count);
-                    console.log('SectionLength:',SectionLength);
-                    console.log('sectionnumber:',sectionnumber);
-
-                }
-
-            }
-
         }
         else{
             count--;
             move = (count / ContainerWidthPer) * ContainerWidthPer;
-            if(move < 0){
+            if(move >= 0){
+                ContainerMove(move);
+                if(gunami <= SectionIndex){
+                    SectionScale((gunami - (count / SectionLength)), gunami-1);
+
+                }
+            }
+            else{
                 ContainerMove(0);
                 move = 0;
                 count = 0;
+                gunami = 1;
             }
-            if(move >= 0){
-                ContainerMove(move);
-                var sectionnumber = count / SectionLength;
-                if(sectionnumber < 1 && sectionnumber >= 0){
-                    SectionScale((1 - (count/SectionLength)), 0);
-                }
-                if(sectionnumber < 2 && sectionnumber >= 1){
-                    SectionScale((2 - (count/SectionLength)), 1);
-                }
-                if(sectionnumber < 3 && sectionnumber >= 2){
-                    SectionScale((3 - (count/SectionLength)), 2);
-                }
-                if(sectionnumber < 4 && sectionnumber >= 3){
-                    SectionScale((4 - (count/SectionLength)), 3);
-                }
-            }
-
-            console.log(count);
         }
+        console.log('move:',move);
+        console.log('count:',count);
+        console.log('gunami:',gunami);
+        console.log('SectionIndex:',SectionIndex);
+        console.log('SectionLength:',SectionLength);
+        console.log('');
     }
 }   //window.onload end
